@@ -1,0 +1,32 @@
+.auth-header-ribbon {
+    height: 240px;
+}
+
+.auth-card-cell {
+    display: flex;
+    flex-direction: row;
+
+    .auth-card {
+        margin: -160px 12px 40px;
+        width: 100%;
+        max-width: 512px;
+
+        .mdl-card__title {
+            color: #fff;
+            height: 176px;
+            background: url('/assets/img/welcome_card.jpg') center / cover;
+        }
+    }
+}
+
+#g-signin-button .abcRioButton {
+    &:hover {
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+    }
+
+    &:focus, &:active {
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0 5px 8px rgba(0, 0, 0, 0.14),
+        0 1px 14px rgba(0, 0, 0, 0.12);
+    }
+}

@@ -1,0 +1,10 @@
+{% extends "auth/layout.html" %}
+
+{% block content %}
+    <p>Currently we only support signing in with Google account.</p>
+    <p>When clicking the button above, you agree that we could access and store your personal data, such as email, name and avatar from Google.</p>
+
+    <div id="g-signin-button"></div>
+
+    <script async src="https://apis.google.com/js/platform.js"></script>
+{% endblock %}

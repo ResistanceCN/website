@@ -1,0 +1,8 @@
+config.yml
+assets/js/app.js
+assets/css/app.css
+assets/img/demo.svg
+
+mix-manifest.json
+yarn-error.log
+node_modules/

@@ -1,0 +1,17 @@
+.home-header {
+    .home-header-row-main {
+        flex-direction: column;
+        height: auto;
+        padding: 48px 0;
+
+        .home-description {
+            font-size: 1.2em;
+            margin-bottom: 2em;
+            font-weight: 300;
+        }
+
+        .mdl-button {
+            text-transform: none;
+        }
+    }
+}

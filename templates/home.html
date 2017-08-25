@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <div class="mdl-layout">
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-layout__header-always-show mdl-color--blue-grey-900 home-header">
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/login">Login</a>
+                </nav>
+            </div>
+            <div class="mdl-layout__header-row home-header-row-main">
+                <p><img src="/assets/img/cantonres-big.svg" alt="CANTONRES" height="160"></p>
+                <p class="home-description">It's time to move. Join Resistance!</p>
+                <p>
+                    <a href="#" class="mdl-button mdl-button--raised mdl-color--blue-grey-700 mdl-color-text--white">Join</a>
+                    &nbsp;&nbsp;
+                    <a href="#" class="mdl-button mdl-button--raised mdl-button--accent">Tutorial</a>
+                </p>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content">
+            content goes here
+        </main>
+    </div>
+{% endblock %}

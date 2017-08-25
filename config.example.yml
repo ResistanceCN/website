@@ -1,0 +1,17 @@
+debug: false
+listen: localhost:9000
+
+postgres_host: localhost
+postgres_database: cantonres
+postgres_user: kevin
+postgres_password: foobar
+postgres_ssl: false
+
+redis_addr: localhost:6379
+redis_password: foobar
+redis_database:
+redis_prefix:
+
+google_client_id:
+google_client_secret:
+google_map_key:
