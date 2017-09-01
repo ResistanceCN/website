@@ -1,0 +1,12 @@
+html, body {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    background: #fafafa;
+}
+
+.mdl-layout__header-row--no-drawer {
+    padding-left: 32px;
+}
+
+.mdl-layout__content--no-shrink {
+    flex-shrink: 0;
+}

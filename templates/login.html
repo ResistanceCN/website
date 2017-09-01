@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-color--light-blue-800">
+            <div class="mdl-layout__header-row mdl-layout__header-row--no-drawer">
+                <a href="/"><img src="/assets/img/cantonres.svg" alt="CANTONRES" height="28"></a>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content mdl-layout__content--no-shrink">
+            <div class="auth-card-container">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-card mdl-shadow--2dp auth-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text auth-card-title">Welcome</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <div id="google-signin">
+                            <p>Currently we only support signing in with Google account.</p>
+                            <p>When clicking the button above, you agree that we could access and store your profile, such as email, name and avatar from Google.</p>
+
+                            <p><div id="google-signin-button"></div></p>
+                        </div>
+
+                        <div id="register-form" style="display: none">
+                            <form action="/register" method="POST" class="ajax-form">
+                                <input type="hidden" name="id_token" id="id_token">
+
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="email" id="email" readonly>
+                                    <label class="mdl-textfield__label">Email</label>
+                                </div>
+
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="name" name="name" pattern="[0-9A-Za-z]{3,16}">
+                                    <label class="mdl-textfield__label" for="name">Name</label>
+                                </div>
+
+                                <div class="field-name">Faction</div>
+
+                                <div class="form-radio">
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="faction-res">
+                                        <input type="radio" class="mdl-radio__button" id="faction-res" name="faction" value="1" checked>
+                                        <span class="mdl-radio__label">Resistance</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-radio">
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="faction-enl">
+                                        <input type="radio" class="mdl-radio__button" id="faction-enl" name="faction" value="2">
+                                        <span class="mdl-radio__label">Enlightened</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-radio">
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="faction-none">
+                                        <input type="radio" class="mdl-radio__button" id="faction-none" name="faction" value="0">
+                                        <span class="mdl-radio__label">Keep it secret</span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js"></script>
+{% endblock %}

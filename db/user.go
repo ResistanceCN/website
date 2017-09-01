@@ -1,9 +1,7 @@
-package models
+package db
 
 import (
 	"time"
-
-	"../services"
 )
 
 const (
@@ -13,7 +11,7 @@ const (
 )
 
 type User struct {
-	ID         uint       `json:"id";gorm:"primary_key"`
+	ID         int        `json:"id";gorm:"primary_key"`
 
 	GoogleID   string     `json:"google_id";gorm:"not null;unique"`
 	Email      string     `json:"email";gorm:"not null;unique"`
@@ -25,5 +23,5 @@ type User struct {
 }
 
 func init() {
-	services.DB.AutoMigrate(&User{})
+	Conn().AutoMigrate(&User{})
 }

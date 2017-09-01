@@ -1,0 +1,26 @@
+form {
+    .field-name {
+        font-size: 12px;
+        margin-bottom: 0.6em;
+    }
+
+    .form-radio {
+        margin-bottom: 0.4em;
+    }
+
+    .mdl-textfield {
+        width: 100%;
+    }
+
+    .mdl-textfield--floating-label.is-dirty:not(.is-focused) .mdl-textfield__label {
+        color: inherit;
+    }
+
+    .mdl-button {
+        margin: 12px 0 0;
+
+        &:last-of-type {
+            margin-bottom: 8px;
+        }
+    }
+}

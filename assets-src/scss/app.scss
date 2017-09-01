@@ -1,6 +1,8 @@
 @import "~material-design-lite/src/material-design-lite";
 
-@import "mdl-custom";
+@import "components/layout";
+@import "components/button";
+@import "components/form";
 
 @import "pages/home";
 @import "pages/auth";

@@ -1,12 +1,12 @@
 package middlewares
 
 import (
-	"../helpers"
+	"../util"
 	"github.com/kataras/iris/context"
 )
 
 func RedirectIfAuthenticated(ctx context.Context) {
-	user := helpers.GetUser(ctx)
+	user := util.GetUser(ctx)
 
 	if user.ID != 0 {
 		ctx.Redirect("/")
@@ -17,7 +17,7 @@ func RedirectIfAuthenticated(ctx context.Context) {
 }
 
 func RequireAuthentication(ctx context.Context) {
-	user := helpers.GetUser(ctx)
+	user := util.GetUser(ctx)
 
 	if user.ID == 0 {
 		ctx.Redirect("/login")

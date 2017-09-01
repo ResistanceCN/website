@@ -1,9 +1,9 @@
 package main
 
 import (
-	"./controllers"
+	"./controller"
 	"./middlewares"
-	"./services"
+	"./service"
 	"github.com/kataras/iris"
 )
 
@@ -12,16 +12,15 @@ func handle(app *iris.Application) {
 
 	app.Use(middlewares.StartSession)
 
-	app.Get("/", controllers.Home)
+	app.Get("/", controller.Home)
 	app.Get("/article/{id:int min(1)}")
 	app.Get("/agent/{id:int min(1)}")
 
 	auth := app.Party("/", middlewares.RedirectIfAuthenticated)
 	{
-		auth.Get("/login", controllers.LoginPage)
-		auth.Post("/login")
-		auth.Get("/register")
-		auth.Post("/register")
+		auth.Get("/login", controller.LoginPage)
+		auth.Post("/login", controller.Login)
+		auth.Post("/register", controller.Register)
 	}
 
 	user := app.Party("/user", middlewares.RequireAuthentication)
@@ -42,10 +41,10 @@ func handle(app *iris.Application) {
 func main() {
 	app := iris.Default()
 
-	view := iris.Django("./templates", ".html").Reload(services.Config.Debug)
+	view := iris.Django("./templates", ".html").Reload(service.Config.Debug)
 	app.RegisterView(view)
 
 	handle(app)
 
-	app.Run(iris.Addr(services.Config.Listen))
+	app.Run(iris.Addr(service.Config.Listen))
 }
