@@ -6,10 +6,10 @@
             <div class="mdl-layout__header-row">
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation">
-                    {% if user %}
-                        <a class="mdl-navigation__link" href="/user">{{ user.Name }}</a>
-                    {% else %}
+                    {% if user.ID == 0 %}
                         <a class="mdl-navigation__link" href="/login">Login</a>
+                    {% else %}
+                        <a class="mdl-navigation__link" href="/user">{{ user.Name }}</a>
                     {% endif %}
                 </nav>
             </div>
@@ -59,8 +59,7 @@
                                     </script>
                                 </div>
                                 <div class="mdl-card__supporting-text article-content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                                    {{ article.Description }}
                                 </div>
                             </article>
                         </div>

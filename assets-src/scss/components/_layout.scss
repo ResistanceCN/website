@@ -3,11 +3,26 @@ html, body {
     background: #fafafa;
 }
 
+a {
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .mdl-layout__header-row--no-drawer {
     padding-left: 32px;
 }
 
 .mdl-layout__content--no-shrink {
+    flex-shrink: 0;
+}
+
+.ribbon {
+    height: 300px;
+    margin-bottom: -240px;
     flex-shrink: 0;
 }
 

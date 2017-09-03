@@ -5,8 +5,8 @@ import "time"
 type Article struct {
 	ID           int          `json:"id"`
 
-	Author       User         `json:"author"`
-	AuthorID     int          `json:"author_id";gorm:"not null"`
+	User         User         `json:"author"`
+	UserID       int          `json:"author_id";gorm:"not null"`
 
 	Title        string       `json:"title";gorm:"not null"`
 	Content      string       `json:"name";gorm:"not null"`

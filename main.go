@@ -15,7 +15,7 @@ func handle(app *iris.Application) {
 	app.Use(middlewares.Authentication)
 
 	app.Get("/", controller.Home)
-	app.Get("/article/{id:int min(1)}")
+	app.Get("/article/{id:int min(1)}", controller.ShowArticle)
 	app.Get("/agent/{id:int min(1)}")
 
 	auth := app.Party("/", middlewares.RedirectIfAuthenticated)
