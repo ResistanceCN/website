@@ -5,6 +5,15 @@ import (
 	"github.com/kataras/iris/context"
 )
 
+func Authentication(ctx context.Context) {
+	user := util.GetUser(ctx)
+
+	ctx.Values().Set("user", user)
+	ctx.ViewData("user", user)
+
+	ctx.Next()
+}
+
 func RedirectIfAuthenticated(ctx context.Context) {
 	user := util.GetUser(ctx)
 
@@ -23,8 +32,6 @@ func RequireAuthentication(ctx context.Context) {
 		ctx.Redirect("/login")
 		return
 	}
-
-	ctx.Values().Set("user", user)
 
 	ctx.Next()
 }

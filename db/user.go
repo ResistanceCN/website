@@ -11,7 +11,7 @@ const (
 )
 
 type User struct {
-	ID         int        `json:"id";gorm:"primary_key"`
+	ID         int        `json:"id"`
 
 	GoogleID   string     `json:"google_id";gorm:"not null;unique"`
 	Email      string     `json:"email";gorm:"not null;unique"`

@@ -5,13 +5,11 @@ import (
 	"strconv"
 
 	"../db"
-	"../service"
 	"../util"
 	"github.com/kataras/iris/context"
 )
 
 func LoginPage(ctx context.Context) {
-	ctx.ViewData("google_client_id", service.Config.GoogleClientID)
 	ctx.View("login.html")
 }
 
@@ -79,6 +77,7 @@ func Register(ctx context.Context) {
 		GoogleID: info.SUB,
 	}).Attrs(db.User{
 		Email: info.Email,
+		Name: name,
 		Faction: int8(faction),
 	}).FirstOrCreate(&user)
 

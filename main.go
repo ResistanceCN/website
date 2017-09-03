@@ -10,7 +10,9 @@ import (
 func handle(app *iris.Application) {
 	app.StaticWeb("/assets", "./assets")
 
+	app.Use(middlewares.PassConfigToFrontEnd)
 	app.Use(middlewares.StartSession)
+	app.Use(middlewares.Authentication)
 
 	app.Get("/", controller.Home)
 	app.Get("/article/{id:int min(1)}")

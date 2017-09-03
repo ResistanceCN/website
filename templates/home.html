@@ -6,7 +6,11 @@
             <div class="mdl-layout__header-row">
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="/login">Login</a>
+                    {% if user %}
+                        <a class="mdl-navigation__link" href="/user">{{ user.Name }}</a>
+                    {% else %}
+                        <a class="mdl-navigation__link" href="/login">Login</a>
+                    {% endif %}
                 </nav>
             </div>
             <div class="mdl-layout__header-row home-header-row-main">
@@ -21,7 +25,48 @@
         </header>
 
         <main class="mdl-layout__content mdl-layout__content--no-shrink">
-            content goes here
+            <div class="container">
+                <section class="articles grid">
+                    {% for article in articles %}
+                        <div class="grid-item">
+                            <article id="article-{{ article.ID }}" class="article mdl-card mdl-shadow--2dp">
+                                {% if article.CoverImage %}
+                                    <div class="mdl-card__image article-image">
+                                        <img src="{{ article.CoverImage }}" alt="{{ article.Title }}">
+                                    </div>
+                                {% endif %}
+                                <div class="mdl-card__title article-title">
+                                    <h2 class="mdl-card__title-text">
+                                        <a href="/article/{{ article.ID }}">{{ article.Title }}</a>
+                                    </h2>
+                                </div>
+                                <div class="article-meta">
+                                    <script>
+                                        var date = new Date("{{ article.PublishedAt.Format("2006-01-02T15:04:05.999Z07:00") }}");
+                                        console.log(date)
+                                        var now = new Date();
+                                        console.log(now)
+
+                                        var output = '<time>';
+
+                                        if (date.getYear() !== now.getYear()) {
+                                            output += date.getYear() + '-';
+                                        }
+
+                                        output += date.getMonth() + '-' + date.getDate() + '</time>';
+
+                                        document.write(date.toLocaleString());
+                                    </script>
+                                </div>
+                                <div class="mdl-card__supporting-text article-content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </section>
+            </div>
         </main>
     </div>
 {% endblock %}
