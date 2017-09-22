@@ -17,7 +17,7 @@ if (window.gapi) {
             },
             onfailure(error) {
                 console.error(error);
-                toast("Error signing in Google account!");
+                toast('Error signing in Google account!');
             }
         });
     });
@@ -35,7 +35,7 @@ function login(id_token) {
         console.log(user);
 
         if (user.id) {
-            toast("Login successful");
+            toast('Login successful');
             location.href = '/';
         } else {
             $('.auth-card-title').text('Create your profile');
@@ -52,7 +52,7 @@ function login(id_token) {
     });
 
     promise.fail(function (xhr) {
-        toast("Failed to login: " + xhr.status);
+        toast('Failed to login: ' + xhr.status);
         console.error(xhr.responseText);
     });
 }

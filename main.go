@@ -27,7 +27,7 @@ func handle(app *iris.Application) {
 
 	user := app.Party("/user", middlewares.RequireAuthentication)
 	{
-		user.Get("/")
+		user.Get("/", controller.UserPage)
 		user.Put("/")
 
 		user.Get("/settings")

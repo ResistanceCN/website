@@ -41,22 +41,7 @@
                                     </h2>
                                 </div>
                                 <div class="article-meta">
-                                    <script>
-                                        var date = new Date("{{ article.PublishedAt.Format("2006-01-02T15:04:05.999Z07:00") }}");
-                                        console.log(date)
-                                        var now = new Date();
-                                        console.log(now)
-
-                                        var output = '<time>';
-
-                                        if (date.getYear() !== now.getYear()) {
-                                            output += date.getYear() + '-';
-                                        }
-
-                                        output += date.getMonth() + '-' + date.getDate() + '</time>';
-
-                                        document.write(date.toLocaleString());
-                                    </script>
+                                    <time>{{ article.PublishedAt | time: "2006-01-02 15:04" }}</time>
                                 </div>
                                 <div class="mdl-card__supporting-text article-content">
                                     {{ article.Description }}

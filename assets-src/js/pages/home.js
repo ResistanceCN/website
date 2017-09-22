@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import Masonry from 'masonry-layout';
-import { windowWidth } from "../utils"
 
 $(function () {
     let $grid = $('.grid');

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--blue-grey-900 user-header-banner">
+            <div class="layer"></div>
+
+            <div class="mdl-layout__header-row mdl-layout__header-row--no-drawer">
+                <a href="/"><img src="/assets/img/cantonres.svg" alt="CANTONRES" height="28"></a>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    {% if user.ID == 0 %}
+                        <a class="mdl-navigation__link" href="/login">Login</a>
+                    {% else %}
+                        <a class="mdl-navigation__link" href="/user">{{ user.Name }}</a>
+                    {% endif %}
+                </nav>
+            </div>
+
+            <div class="container user-info-container">
+                <div class="user-info">
+                    <img class="user-avatar " src="{{ user_avatar_url }}" alt="{{ user.Name }}">
+                    <div>
+                        <h2>{{ user.Name }}</h2>
+                        <div class="user-description">
+                            <p>It's time to move.</p>
+                        </div>
+                        <div class="user-faction">
+                            <img src="/assets/img/ingress.svg" alt="Unknown Faction">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content mdl-layout__content--no-shrink">
+            <div class="container user-container mdl-grid">
+            </div>
+        </main>
+    </div>
+{% endblock %}

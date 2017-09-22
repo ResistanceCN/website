@@ -15,7 +15,14 @@
         margin: 0 12px 60px;
         width: 100%;
         max-width: 800px;
-        padding: 24px 32px;
+
+        @media (min-width: 480px) {
+            padding: 12px 16px;
+        }
+
+        @media (min-width: 840px) {
+            padding: 24px 36px;
+        }
 
         .article-author {
             font-weight: 300;

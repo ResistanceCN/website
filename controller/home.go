@@ -10,6 +10,7 @@ func Home(ctx context.Context) {
 
 	db.Conn().
 		Where("published = true").
+		Order("published_at desc, id desc").
 		Limit(12).
 		Offset(0).
 		Find(&articles)

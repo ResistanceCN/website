@@ -3,7 +3,7 @@ html, body {
     background: #fafafa;
 }
 
-a {
+a:not(.mdl-button):not(.mdl-navigation__link) {
     font-weight: 400;
     text-decoration: none;
 
