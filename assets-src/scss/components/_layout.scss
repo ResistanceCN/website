@@ -20,6 +20,11 @@ a:not(.mdl-button):not(.mdl-navigation__link) {
     flex-shrink: 0;
 }
 
+.mdl-checkbox__tick-outline {
+    margin-top: 0.5px;
+    margin-left: 0.5px;
+}
+
 .ribbon {
     height: 300px;
     margin-bottom: -240px;

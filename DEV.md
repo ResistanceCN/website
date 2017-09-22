@@ -15,7 +15,7 @@
 
 ```bash
 # Run Server
-php -S localhost:9000 -t public server.php
+go run main.go
 
 # Webpack Watch
 yarn run watch

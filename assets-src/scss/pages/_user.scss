@@ -66,5 +66,47 @@
 
 .user-container {
     max-width: 900px;
-    margin-top: 80px;
+    margin: 40px auto 60px;
+
+    .user-article-card {
+        min-height: 0;
+
+        .article {
+            font-size: 14px;
+            height: 44px;
+            padding: 0 16px;
+            border-bottom: 1px solid #eee;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .article-checkbox {
+                margin-right: 8px;
+            }
+
+            .article-title {
+                flex-grow: 1;
+            }
+
+            .article-action {
+                color: #666;
+                display: none;
+
+                .material-icons:hover {
+                    color: #000;
+                }
+            }
+
+            &:hover .article-action {
+                display: block;
+            }
+        }
+    }
 }
