@@ -35,27 +35,31 @@
 
         <main class="mdl-layout__content mdl-layout__content--no-shrink">
             <div class="container user-container mdl-grid">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp user-article-card">
-                    {% for article in articles %}
-                        <div class="article">
-                            <div class="article-checkbox">
-                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="article-checkbox-{{ article.ID }}">
-                                    <input type="checkbox" id="article-checkbox-{{ article.ID }}" class="mdl-checkbox__input">
-                                </label>
-                            </div>
+                {% for year, articles in articles_by_year reversed sorted %}
+                    <div class="mdl-color-text--grey-700 article-year">{{ year }}</div>
 
-                            <span class="article-title">{{ article.Title }}</span>
+                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp user-article-card">
+                        {% for article in articles %}
+                            <div class="article" id="article-{{ article.ID }}">
+                                <div class="article-checkbox">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="article-checkbox-{{ article.ID }}">
+                                        <input type="checkbox" id="article-checkbox-{{ article.ID }}" class="mdl-checkbox__input">
+                                    </label>
+                                </div>
 
-                            <div class="article-action">
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">delete</i>                                </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">mode_edit</i>
-                                </button>
+                                <span class="article-title">{{ article.Title }}</span>
+
+                                <div class="article-action">
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">delete</i>                                </button>
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">mode_edit</i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         </main>
     </div>

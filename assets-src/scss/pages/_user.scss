@@ -66,7 +66,11 @@
 
 .user-container {
     max-width: 900px;
-    margin: 40px auto 60px;
+    margin: 20px auto 60px;
+
+    .article-year {
+        padding: 20px 16px 8px;
+    }
 
     .user-article-card {
         min-height: 0;
@@ -96,11 +100,11 @@
             }
 
             .article-action {
-                color: #666;
+                color: #616161;
                 display: none;
 
                 .material-icons:hover {
-                    color: #000;
+                    color: #212121;
                 }
             }
 
