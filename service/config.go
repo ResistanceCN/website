@@ -8,23 +8,29 @@ import (
 )
 
 var Config struct {
-	Debug               bool
-	Listen              string
+	Debug   bool
+	Listen  string
 
-	PostgresHost        string  `yaml:"postgres_host"`
-	PostgresDatabase    string  `yaml:"postgres_database"`
-	PostgresUser        string  `yaml:"postgres_user"`
-	PostgresPassword    string  `yaml:"postgres_password"`
-	PostgresSSL         bool    `yaml:"postgres_ssl"`
+	Postgres struct {
+		Host      string  `yaml:"host"`
+		Database  string  `yaml:"database"`
+		User      string  `yaml:"user"`
+		Password  string  `yaml:"password"`
+		SSL       bool    `yaml:"ssl"`
+	} `yaml:"postgres"`
 
-	RedisAddr           string  `yaml:"redis_addr"`
-	RedisPassword       string  `yaml:"redis_password"`
-	RedisDatabase       string  `yaml:"redis_database"`
-	RedisPrefix         string  `yaml:"redis_prefix"`
+	Redis struct {
+		Addr      string  `yaml:"addr"`
+		Password  string  `yaml:"password"`
+		Database  string  `yaml:"database"`
+		Prefix    string  `yaml:"prefix"`
+	} `yaml:"redis"`
 
-	GoogleClientID      string  `yaml:"google_client_id"`
-	GoogleClientSecret  string  `yaml:"google_client_secret"`
-	GoogleMapKey        string  `yaml:"google_map_key"`
+	Google struct {
+		ClientID      string  `yaml:"client_id"`
+		ClientSecret  string  `yaml:"client_secret"`
+		MapKey        string  `yaml:"map_key"`
+	} `yaml:"google"`
 }
 
 func init() {

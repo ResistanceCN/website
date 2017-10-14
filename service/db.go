@@ -8,13 +8,13 @@ import (
 var DB *gorm.DB
 
 func init() {
-	dbinfo := "host=" + Config.PostgresHost +
-		" dbname=" + Config.PostgresDatabase +
-		" user=" + Config.PostgresUser +
-		" password=" + Config.PostgresPassword +
+	dbinfo := "host=" + Config.Postgres.Host +
+		" dbname=" + Config.Postgres.Database +
+		" user=" + Config.Postgres.User +
+		" password=" + Config.Postgres.Password +
 		" sslmode="
 
-	if Config.PostgresSSL {
+	if Config.Postgres.SSL {
 		dbinfo += "enable"
 	} else {
 		dbinfo += "disable"

@@ -16,10 +16,10 @@ func init() {
 	})
 
 	db := redis.New(service.Config{
-		Addr: Config.RedisAddr,
-		Password: Config.RedisPassword,
-		Database: Config.RedisDatabase,
-		Prefix: Config.RedisPrefix,
+		Addr: Config.Redis.Addr,
+		Password: Config.Redis.Password,
+		Database: Config.Redis.Database,
+		Prefix: Config.Redis.Prefix,
 	})
 
 	Sessions.UseDatabase(db)

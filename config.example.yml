@@ -1,17 +1,20 @@
 debug: false
 listen: localhost:9000
 
-postgres_host: localhost
-postgres_database: cantonres
-postgres_user: kevin
-postgres_password: foobar
-postgres_ssl: false
+postgres:
+  host: localhost
+  database: cantonres
+  user: kevin
+  password: foobar
+  ssl: false
 
-redis_addr: localhost:6379
-redis_password: foobar
-redis_database:
-redis_prefix:
+redis:
+  addr: localhost:6379
+  password: foobar
+  database:
+  prefix:
 
-google_client_id:
-google_client_secret:
-google_map_key:
+google:
+  client_id:
+  client_secret:
+  map_key:

@@ -49,7 +49,7 @@ func VerifyGoogleIDToken(token string) (info GoogleIDTokenInfo, err error) {
 
 	if info.SUB == "" {
 		err = errors.New(info.ErrorDescription)
-	} else if info.AUD != service.Config.GoogleClientID {
+	} else if info.AUD != service.Config.Google.ClientID {
 		err = errors.New("Google Client ID mismatch!")
 	}
 	/*
