@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Go 1.8+
+* Go 1.9+
 * PostgreSQL 9.5+
 * Redis 3.0+
 * Node.js 6.0+

@@ -4,10 +4,10 @@ import (
 	"../db"
 	"../util"
 	"github.com/Automattic/go-gravatar"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func UserPage(ctx context.Context) {
+func UserPage(ctx iris.Context) {
 	user := util.GetUser(ctx)
 
 	avatar := gravatar.NewGravatarFromEmail(user.Email)

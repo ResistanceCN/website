@@ -4,10 +4,10 @@ import (
 	"regexp"
 
 	"../db"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func GetUser(ctx context.Context) db.User {
+func GetUser(ctx iris.Context) db.User {
 	cached := ctx.Values().Get("user")
 
 	if cached != nil {

@@ -6,14 +6,14 @@ import (
 
 	"../db"
 	"../util"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func LoginPage(ctx context.Context) {
+func LoginPage(ctx iris.Context) {
 	ctx.View("login.html")
 }
 
-func Login(ctx context.Context) {
+func Login(ctx iris.Context) {
 	idToken := ctx.PostValue("id_token")
 
 	info, err := util.VerifyGoogleIDToken(idToken)
@@ -39,7 +39,7 @@ func Login(ctx context.Context) {
 	ctx.JSON(user)
 }
 
-func Register(ctx context.Context) {
+func Register(ctx iris.Context) {
 	idToken := ctx.PostValue("id_token")
 	name := ctx.PostValue("name")
 

@@ -1,10 +1,10 @@
 package util
 
 import (
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
 )
 
-func GetSession(ctx context.Context) *sessions.Session {
+func GetSession(ctx iris.Context) *sessions.Session {
 	return ctx.Values().Get("session").(*sessions.Session)
 }

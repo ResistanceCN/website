@@ -2,10 +2,10 @@ package controller
 
 import (
 	"../db"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func Home(ctx context.Context) {
+func Home(ctx iris.Context) {
 	var articles []db.Article
 
 	db.Conn().

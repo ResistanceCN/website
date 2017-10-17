@@ -2,10 +2,10 @@ package middlewares
 
 import (
 	"../util"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func Authentication(ctx context.Context) {
+func Authentication(ctx iris.Context) {
 	user := util.GetUser(ctx)
 
 	ctx.Values().Set("user", user)
@@ -14,7 +14,7 @@ func Authentication(ctx context.Context) {
 	ctx.Next()
 }
 
-func RedirectIfAuthenticated(ctx context.Context) {
+func RedirectIfAuthenticated(ctx iris.Context) {
 	user := util.GetUser(ctx)
 
 	if user.ID != 0 {
@@ -25,7 +25,7 @@ func RedirectIfAuthenticated(ctx context.Context) {
 	ctx.Next()
 }
 
-func RequireAuthentication(ctx context.Context) {
+func RequireAuthentication(ctx iris.Context) {
 	user := util.GetUser(ctx)
 
 	if user.ID == 0 {

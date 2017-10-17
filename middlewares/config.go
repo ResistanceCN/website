@@ -2,11 +2,11 @@ package middlewares
 
 import (
 	"../service"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 )
 
-func PassConfigToFrontEnd(ctx context.Context) {
-	ctx.ViewData("google_client_id", service.Config.GoogleClientID)
+func PassConfigToFrontEnd(ctx iris.Context) {
+	ctx.ViewData("google_client_id", service.Config.Google.ClientID)
 
 	ctx.Next()
 }

@@ -4,11 +4,11 @@ import (
 	"strconv"
 
 	"../db"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris"
 	"github.com/shurcooL/github_flavored_markdown"
 )
 
-func ShowArticle(ctx context.Context) {
+func ShowArticle(ctx iris.Context) {
 	articleID, _ := strconv.Atoi(ctx.Params().Get("id"))
 
 	article := db.Article{
