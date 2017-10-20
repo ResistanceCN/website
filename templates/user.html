@@ -26,7 +26,13 @@
                             <p>It's time to move.</p>
                         </div>
                         <div class="user-faction">
-                            <img src="/assets/img/ingress.svg" alt="Unknown Faction">
+                            {% if user.Faction == 0 %}
+                                <img src="/assets/img/ingress.svg" alt="Unknown Faction">
+                            {% elif user.Faction == 1 %}
+                                <img src="/assets/img/resistance.svg" alt="Unknown Faction">
+                            {% elif user.Faction == 2 %}
+                                <img src="/assets/img/enlightened.svg" alt="Unknown Faction">
+                            {% endif %}
                         </div>
                     </div>
                 </div>
