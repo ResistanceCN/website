@@ -63,9 +63,11 @@ function updateToolbarPos() {
 }
 
 function findBlocksAndAddClass(codemirror, start, end, className) {
+    // Indicate if the line is a part of a block in the iteration
     let inBlock = false;
 
     codemirror.eachLine(line => {
+        // Determine if a start token is found (may be the same with end token)
         let blockStart = line.text.startsWith(start);
 
         if (!inBlock && !blockStart) {
@@ -75,7 +77,12 @@ function findBlocksAndAddClass(codemirror, start, end, className) {
 
         codemirror.addLineClass(line, 'text', className);
 
-        let searchStart = (!inBlock) ? start.length : 0;
-        inBlock = line.text.indexOf(end, searchStart) === -1;
+        // If inBlock is false, the line must be the start line of a block
+        // Therefore, we should search for the end token with an offset because two token might be identical
+        // If inBlock is true, the line is not the start line, then we can search in whole line
+        let searchPosition = (!inBlock) ? start.length : 0;
+
+        // If the line is the end line of a block, inBlock will be set to false
+        inBlock = line.text.indexOf(end, searchPosition) === -1;
     });
 }
