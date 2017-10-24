@@ -66,19 +66,16 @@ function findBlocksAndAddClass(codemirror, start, end, className) {
     let inBlock = false;
 
     codemirror.eachLine(line => {
-        if (inBlock) {
-            codemirror.addLineClass(line, 'text', className);
+        let blockStart = line.text.startsWith(start);
 
-            if (line.text.indexOf(end) !== -1) {
-                inBlock = false
-            }
-        } else {
-            if (line.text.startsWith(start)) {
-                inBlock = true;
-                codemirror.addLineClass(line, 'text', className);
-            } else {
-                codemirror.removeLineClass(line, 'text', className)
-            }
+        if (!inBlock && !blockStart) {
+            codemirror.removeLineClass(line, 'text', className);
+            return;
         }
+
+        codemirror.addLineClass(line, 'text', className);
+
+        let searchStart = (!inBlock) ? start.length : 0;
+        inBlock = line.text.indexOf(end, searchStart) === -1;
     });
 }

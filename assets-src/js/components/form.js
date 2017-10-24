@@ -64,6 +64,10 @@ $(function () {
                 $btn.prop('disabled', false);
             }
 
+            let callback = $this.data('done');
+            if (callback && typeof window[callback] === 'function')
+                window[callback]();
+
             toast(data.msg);
         });
 
@@ -75,7 +79,17 @@ $(function () {
                 toast("Unknown error. Please contact administrators")
             }
 
+            let callback = $this.data('fail');
+            if (callback && typeof window[callback] === 'function')
+                window[callback]();
+
             $btn.prop('disabled', false);
         });
+
+        promise.always(function () {
+            let callback = $this.data('always');
+            if (callback && typeof window[callback] === 'function')
+                window[callback]();
+        })
     });
 });
