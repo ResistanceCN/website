@@ -2,6 +2,12 @@ package db
 
 import "time"
 
+const (
+	STATUS_DRAFT = 0
+	STATUS_IN_REVIEW = 1
+	STATUS_PUBLISHED = 2
+)
+
 type Article struct {
 	ID           int          `json:"id"`
 
@@ -13,7 +19,7 @@ type Article struct {
 	CoverImage   string       `json:"cover_image"`
 	Description  string       `json:"description"`
 
-	Published    bool         `json:"published";gorm:"not null"`
+	Status       int8         `json:"status";gorm:"not null"`
 	PublishedAt  time.Time    `json:"published_at"`
 
 	CreatedAt    time.Time    `json:"created_at"`

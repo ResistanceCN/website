@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--blue-grey-900 home-header">
+            <div class="mdl-layout__header-row">
+                <a href="/"><img src="/assets/img/cantonres.svg" alt="CANTONRES" height="28"></a>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    {% if user.ID == 0 %}
+                        <a class="mdl-navigation__link" href="/login">Login</a>
+                    {% else %}
+                        <a class="mdl-navigation__link" href="/user">{{ user.Name }}</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content mdl-layout__content--no-shrink">
+            <div class="container">
+                <form action="/user/article/{{ article.ID }}" method="POST">
+                    <input type="text" name="title" class="editor-title" value="{{ article.Title }}" placeholder="Title here...">
+                    <div class="editor mdl-card mdl-shadow--2dp ">
+                        <textarea id="markdown-editor" name="content">{{ article.Content | safe }}</textarea>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+{% endblock %}

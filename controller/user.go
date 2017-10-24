@@ -32,5 +32,21 @@ func UserPage(ctx iris.Context) {
 	ctx.ViewData("user_avatar_url", avatar.GetURL())
 	ctx.ViewData("user", user)
 	ctx.ViewData("articles_by_year", articlesByYears)
-	ctx.View("user.html")
+	ctx.View("user/user.html")
+}
+
+func UserEditArticle(ctx iris.Context) {
+	user := util.GetUser(ctx)
+
+	id, _ := ctx.Params().GetInt("id")
+	var article db.Article
+	db.Conn().First(&article, id)
+
+	if article.ID == 0 || article.UserID != user.ID {
+		ctx.NotFound()
+		return
+	}
+
+	ctx.ViewData("article", article)
+	ctx.View("user/article.html")
 }

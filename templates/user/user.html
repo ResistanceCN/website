@@ -40,28 +40,37 @@
         </header>
 
         <main class="mdl-layout__content mdl-layout__content--no-shrink">
-            <div class="container user-container mdl-grid">
+            <div class="container user-container">
                 {% for year, articles in articles_by_year reversed sorted %}
                     <div class="mdl-color-text--grey-700 article-year">{{ year }}</div>
 
-                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp user-article-card">
+                    <div class="mdl-card mdl-shadow--2dp user-article-card">
                         {% for article in articles %}
                             <div class="article" id="article-{{ article.ID }}">
                                 <div class="article-checkbox">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="article-checkbox-{{ article.ID }}">
-                                        <input type="checkbox" id="article-checkbox-{{ article.ID }}" class="mdl-checkbox__input">
+                                        <input type="checkbox" id="article-checkbox-{{ article.ID }}" class="mdl-checkbox__input"{% if not article.Status == 0 %} disabled{% endif %}>
                                     </label>
                                 </div>
 
                                 <span class="article-title">{{ article.Title }}</span>
 
-                                <div class="article-action">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">delete</i>                                </button>
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">mode_edit</i>
-                                    </button>
-                                </div>
+                                {% if article.Status == 0 %}
+                                    <div class="article-action">
+                                        <button class="mdl-button mdl-js-button mdl-button--icon">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                        <a href="/user/article/{{ article.ID }}" class="mdl-button mdl-js-button mdl-button--icon">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                    </div>
+                                {% elif article.Status == 1 %}
+                                    <span class="article-published mdl-color-text--light-blue-500">IN REVIEW</span>
+                                {% elif article.Status == 2 %}
+                                    <span class="article-published mdl-color-text--light-green-500">PUBLISHED</span>
+                                {% else %}
+                                    <span class="article-published mdl-color-text--red-500">UNKNOWN</span>
+                                {% endif %}
                             </div>
                         {% endfor %}
                     </div>

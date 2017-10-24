@@ -14,6 +14,11 @@ a:not(.mdl-button):not(.mdl-navigation__link) {
 
 .mdl-layout__header-row--no-drawer {
     padding-left: 32px;
+
+    @media (max-width: 479px) {
+        padding-left: 16px;
+        padding-right: 0;
+    }
 }
 
 .mdl-layout__content--no-shrink {

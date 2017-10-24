@@ -39,9 +39,8 @@
                 font-size: 30px;
                 line-height: 1em;
                 font-weight: 300;
-                margin: 0 0 0 5px;
+                margin: 0 0 0 -1px;
                 padding: 0;
-                transform: scale(1.1, 1);
             }
 
             .user-description p {
@@ -73,6 +72,7 @@
     }
 
     .user-article-card {
+        width: 100%;
         min-height: 0;
 
         .article {
@@ -97,11 +97,25 @@
 
             .article-title {
                 flex-grow: 1;
+                word-break: keep-all;
+                white-space: nowrap;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .article-published {
+                font-size: 12px;
+                font-weight: 300;
+                font-style: italic;
+
+                padding-left: 8px;
+                flex-shrink: 0;
             }
 
             .article-action {
                 color: #616161;
                 display: none;
+                flex-shrink: 0;
 
                 .material-icons:hover {
                     color: #212121;

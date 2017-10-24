@@ -9,7 +9,7 @@ func Home(ctx iris.Context) {
 	var articles []db.Article
 
 	db.Conn().
-		Where("published = true").
+		Where("status = 2").
 		Order("published_at desc, id desc").
 		Limit(12).
 		Offset(0).

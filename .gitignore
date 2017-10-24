@@ -1,7 +1,8 @@
 config.yml
-assets/js/app.js
 assets/css/app.css
 assets/img/demo.svg
+assets/js
+assets/fonts
 
 mix-manifest.json
 yarn-error.log

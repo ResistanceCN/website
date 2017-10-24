@@ -32,9 +32,8 @@ func handle(app *iris.Application) {
 
 		user.Get("/settings")
 
-		user.Get("/article")
 		user.Post("/article")
-		user.Get("/article/{id:int min(1)}") // Edit Page
+		user.Get("/article/{id:int min(1)}", controller.UserEditArticle) // Edit Page
 		user.Put("/article/{id:int min(1)}") // Unpublished Only
 		user.Delete("/article/{id:int min(1)}") // Unpublished Only
 	}

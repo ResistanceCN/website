@@ -1,8 +1,13 @@
 // @import "~material-design-lite/src/material-design-lite";
 
+@import "~font-awesome/scss/font-awesome";
+@import "~codemirror/lib/codemirror";
+@import "~simplemde/src/css/simplemde";
+
 @import "components/layout";
 @import "components/button";
 @import "components/form";
+@import "components/editor";
 
 @import "pages/home";
 @import "pages/auth";
