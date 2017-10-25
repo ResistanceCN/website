@@ -50,15 +50,37 @@
         a {
             text-decoration: none !important;
         }
+
+        .md-icon {
+            display: none;
+        }
+
+        .material-icons {
+            font-size: 24px;
+        }
+
+        .material-icons, .separator {
+            line-height: 30px;
+            vertical-align: middle;
+        }
     }
 
     .CodeMirror {
         border: none;
         margin-top: 51px;
 
+        .CodeMirror-line {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
         .cm-formatting, .cm-comment {
             font-family: monospace;
             background: none;
+        }
+
+        .cm-formatting-header, .cm-formatting-quote {
+            color: #90a4ae;
         }
 
         .cm-formatting-task {
@@ -69,15 +91,32 @@
             font-family: monospace;
         }
 
-        .md-code-block * {
-            font-family: monospace !important;
-            font-size: 14px !important;
+        .block-code {
+            background: rgba(#263238, 0.05);
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 16px;
+
+            &.block-start {
+                padding-top: 16px;
+            }
+
+            &.block-end {
+                padding-top: 12px;
+                padding-bottom: 4px;
+            }
+
+            * {
+                font-family: monospace !important;
+                font-size: 14px !important;
+            }
         }
 
-        .html-comments * {
-             font-family: monospace !important;
-             font-size: 14px !important;
-             color: #aaa !important;
+        .block-comment * {
+            font-family: monospace !important;
+            font-size: 14px !important;
+            color: #bdbdbd !important;
+            text-decoration: none !important;
         }
     }
 }

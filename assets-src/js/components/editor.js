@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import SimpleMDE from 'simplemde';
+import { transformIcons } from '../utils';
 
 let $editor = $('#markdown-editor');
 
@@ -12,38 +13,129 @@ if ($editor.length !== 0) {
         promptURLs: true,
         styleSelectedText: false,
         toolbar: [
-            'bold',
-            'italic',
-            'strikethrough',
+            {
+                name: "bold",
+                action: SimpleMDE.toggleBold,
+                className: "md-icon md-icon-format_bold",
+                title: "Bold",
+                default: true
+            },
+            {
+                name: "italic",
+                action: SimpleMDE.toggleItalic,
+                className: "md-icon md-icon-format_italic",
+                title: "Italic",
+                default: true
+            },
+            {
+                name: "strikethrough",
+                action: SimpleMDE.toggleStrikethrough,
+                className: "md-icon md-icon-format_strikethrough",
+                title: "Strikethrough"
+            },
             '|',
-            'heading',
-            'horizontal-rule',
+            {
+                name: "heading",
+                action: SimpleMDE.toggleHeadingSmaller,
+                className: "md-icon md-icon-text_fields",
+                title: "Heading",
+                default: true
+            },
+            {
+                name: "horizontal-rule",
+                action: SimpleMDE.drawHorizontalRule,
+                className: "md-icon md-icon-remove",
+                title: "Insert Horizontal Line"
+            },
             '|',
-            'code',
-            'quote',
-            'unordered-list',
-            'ordered-list',
+            {
+                name: "code",
+                action: SimpleMDE.toggleCodeBlock,
+                className: "md-icon md-icon-code",
+                title: "Code"
+            },
+            {
+                name: "quote",
+                action: SimpleMDE.toggleBlockquote,
+                className: "md-icon md-icon-format_quote",
+                title: "Quote",
+                default: true
+            },
+            {
+                name: "unordered-list",
+                action: SimpleMDE.toggleUnorderedList,
+                className: "md-icon md-icon-format_list_bulleted",
+                title: "Generic List",
+                default: true
+            },
+            {
+                name: "ordered-list",
+                action: SimpleMDE.toggleOrderedList,
+                className: "md-icon md-icon-format_list_numbered",
+                title: "Numbered List",
+                default: true
+            },
             '|',
-            'link',
-            'image',
-            'table',
+            {
+                name: "link",
+                action: SimpleMDE.drawLink,
+                className: "md-icon md-icon-link",
+                title: "Create Link",
+                default: true
+            },
+            {
+                name: "image",
+                action: SimpleMDE.drawImage,
+                className: "md-icon md-icon-insert_photo",
+                title: "Insert Image",
+                default: true
+            },
+            {
+                name: "table",
+                action: SimpleMDE.drawTable,
+                className: "md-icon md-icon-border_all",
+                title: "Insert Table"
+            },
             '|',
-            'undo',
-            'redo'
-        ],
+            {
+                name: "undo",
+                action: SimpleMDE.undo,
+                className: "md-icon md-icon-undo no-disable",
+                title: "Undo"
+            },
+            {
+                name: "redo",
+                action: SimpleMDE.redo,
+                className: "md-icon md-icon-redo no-disable",
+                title: "Redo"
+            }
+        ]
     });
 
+    const blocks = [
+        {
+            name: 'code',
+            startToken: '```',
+            endToken: '```'
+        },
+        {
+            name: 'comment',
+            startToken: '<!--',
+            endToken: '-->'
+        }
+    ];
+
     editor.codemirror.on('change', instance => {
-        findBlocksAndAddClass(instance, '<!--', '-->', 'html-comments');
-        findBlocksAndAddClass(instance, '```', '```', 'md-code-block');
+        findBlocksAndAddClass(instance, blocks);
     });
-    findBlocksAndAddClass(editor.codemirror, '<!--', '-->', 'html-comments');
-    findBlocksAndAddClass(editor.codemirror, '```', '```', 'md-code-block');
+    findBlocksAndAddClass(editor.codemirror, blocks);
 
     updateToolbarPos();
     $(window).resize(updateToolbarPos);
     $(window).scroll(updateToolbarPos);
     $('.mdl-layout').scroll(updateToolbarPos);
+
+    transformIcons();
 }
 
 function updateToolbarPos() {
@@ -62,27 +154,42 @@ function updateToolbarPos() {
     }
 }
 
-function findBlocksAndAddClass(codemirror, start, end, className) {
-    // Indicate if the line is a part of a block in the iteration
-    let inBlock = false;
+function findBlocksAndAddClass(codeMirror, blocks) {
+    for (let block of blocks) {
+        const className = 'block-' + block.name;
 
-    codemirror.eachLine(line => {
-        // Determine if a start token is found (may be the same with end token)
-        let blockStart = line.text.startsWith(start);
+        // Indicate if the line is a part of a block in the iteration
+        let inBlock = false;
 
-        if (!inBlock && !blockStart) {
-            codemirror.removeLineClass(line, 'text', className);
-            return;
-        }
+        codeMirror.eachLine(line => {
+            // Determine if a start token is found (may be the same with end token)
+            let blockStart = line.text.startsWith(block.startToken);
 
-        codemirror.addLineClass(line, 'text', className);
+            if (!inBlock && !blockStart) {
+                codeMirror.removeLineClass(line, 'text', className);
+                return;
+            }
 
-        // If inBlock is false, the line must be the start line of a block
-        // Therefore, we should search for the end token with an offset because two token might be identical
-        // If inBlock is true, the line is not the start line, then we can search in whole line
-        let searchPosition = (!inBlock) ? start.length : 0;
+            codeMirror.removeLineClass(line, 'text', '');
+            codeMirror.addLineClass(line, 'text', className);
 
-        // If the line is the end line of a block, inBlock will be set to false
-        inBlock = line.text.indexOf(end, searchPosition) === -1;
-    });
+            let searchPosition = 0;
+
+            if (!inBlock) {
+                // If inBlock is false, the line must be the start line of a block
+                // Therefore, we should search for the end token with an offset because two token might be identical
+                // If inBlock is true, the line is not the start line, then we can search in whole line
+                searchPosition = block.startToken.length;
+                codeMirror.addLineClass(line, 'text', 'block-start');
+            }
+
+            if (line.text.indexOf(block.endToken, searchPosition) === -1) {
+                inBlock = true;
+            } else {
+                // If the line is the end line of a block, inBlock will be set to false
+                inBlock = false;
+                codeMirror.addLineClass(line, 'text', 'block-end');
+            }
+        });
+    }
 }

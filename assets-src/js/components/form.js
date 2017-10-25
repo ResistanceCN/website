@@ -66,7 +66,7 @@ $(function () {
 
             let callback = $this.data('done');
             if (callback && typeof window[callback] === 'function')
-                window[callback]();
+                window[callback](arguments);
 
             toast(data.msg);
         });
@@ -81,7 +81,7 @@ $(function () {
 
             let callback = $this.data('fail');
             if (callback && typeof window[callback] === 'function')
-                window[callback]();
+                window[callback](arguments);
 
             $btn.prop('disabled', false);
         });
@@ -89,7 +89,7 @@ $(function () {
         promise.always(function () {
             let callback = $this.data('always');
             if (callback && typeof window[callback] === 'function')
-                window[callback]();
+                window[callback](arguments);
         })
     });
 });
