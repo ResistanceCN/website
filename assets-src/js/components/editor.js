@@ -18,14 +18,12 @@ if ($editor.length !== 0) {
                 action: SimpleMDE.toggleBold,
                 className: "md-icon md-icon-format_bold",
                 title: "Bold",
-                default: true
             },
             {
                 name: "italic",
                 action: SimpleMDE.toggleItalic,
                 className: "md-icon md-icon-format_italic",
                 title: "Italic",
-                default: true
             },
             {
                 name: "strikethrough",
@@ -39,7 +37,6 @@ if ($editor.length !== 0) {
                 action: SimpleMDE.toggleHeadingSmaller,
                 className: "md-icon md-icon-text_fields",
                 title: "Heading",
-                default: true
             },
             {
                 name: "horizontal-rule",
@@ -59,21 +56,18 @@ if ($editor.length !== 0) {
                 action: SimpleMDE.toggleBlockquote,
                 className: "md-icon md-icon-format_quote",
                 title: "Quote",
-                default: true
             },
             {
                 name: "unordered-list",
                 action: SimpleMDE.toggleUnorderedList,
                 className: "md-icon md-icon-format_list_bulleted",
                 title: "Generic List",
-                default: true
             },
             {
                 name: "ordered-list",
                 action: SimpleMDE.toggleOrderedList,
                 className: "md-icon md-icon-format_list_numbered",
                 title: "Numbered List",
-                default: true
             },
             '|',
             {
@@ -81,14 +75,12 @@ if ($editor.length !== 0) {
                 action: SimpleMDE.drawLink,
                 className: "md-icon md-icon-link",
                 title: "Create Link",
-                default: true
             },
             {
                 name: "image",
                 action: SimpleMDE.drawImage,
                 className: "md-icon md-icon-insert_photo",
                 title: "Insert Image",
-                default: true
             },
             {
                 name: "table",
