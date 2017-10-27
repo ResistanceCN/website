@@ -162,7 +162,7 @@ function findBlocksAndAddClass(codeMirror, blocks) {
                 return;
             }
 
-            codeMirror.removeLineClass(line, 'text', '');
+            codeMirror.removeLineClass(line, 'text');
             codeMirror.addLineClass(line, 'text', className);
 
             let searchPosition = 0;

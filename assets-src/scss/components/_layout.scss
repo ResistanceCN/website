@@ -26,8 +26,7 @@ a:not(.mdl-button):not(.mdl-navigation__link) {
 }
 
 .mdl-checkbox__tick-outline {
-    margin-top: 0.5px;
-    margin-left: 0.5px;
+    -webkit-mask: unset;
 }
 
 .ribbon {
