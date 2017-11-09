@@ -42,7 +42,7 @@ func handle(app *iris.Application) {
 func main() {
 	app := iris.Default()
 
-	view := iris.Django("./templates", ".html").Reload(service.Config.Debug)
+	view := iris.Django("./templates/" + service.Config.Theme, ".html").Reload(service.Config.Debug)
 	app.RegisterView(view)
 
 	handle(app)

@@ -10,6 +10,7 @@ import (
 var Config struct {
 	Debug   bool
 	Listen  string
+	Theme   string
 
 	Postgres struct {
 		Host      string  `yaml:"host"`

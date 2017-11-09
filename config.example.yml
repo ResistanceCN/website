@@ -1,5 +1,6 @@
 debug: false
 listen: localhost:9000
+theme: ant
 
 postgres:
   host: localhost
